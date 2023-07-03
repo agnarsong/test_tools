@@ -1,0 +1,29 @@
+package lib
+
+import (
+	"mantle/test/contracts/CustomERC20"
+
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
+)
+
+// func DeployCustomERC20(c *ethclient.Client, prv string) (address common.Address, tx *types.Transaction, CERC20 *CustomERC20.CustomERC20, err error) {
+
+// 	auth, err := GetAuth(c, prv)
+// 	if err != nil {
+// 		return
+// 	}
+
+// 	address, tx, CERC20, err = CustomERC20.DeployCustomERC20(auth, c, "CustomERC20", "CE2")
+
+// 	return
+// }
+
+func NewCustomERC20(c *ethclient.Client, ca string) (CERC20 *CustomERC20.CustomERC20, err error) {
+
+	contractAddress := common.HexToAddress(ca)
+
+	CERC20, err = CustomERC20.NewCustomERC20(contractAddress, c)
+
+	return
+}

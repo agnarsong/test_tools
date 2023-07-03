@@ -1,0 +1,137 @@
+package cmd
+
+import (
+	"errors"
+	"fmt"
+	"mantle/test/config"
+	"mantle/test/lib"
+	"regexp"
+	"strings"
+
+	"github.com/spf13/cobra"
+)
+
+func init() {
+	clientCmd.AddCommand(scCmd)
+	scCmd.AddCommand(dceCmd)
+	scCmd.AddCommand(nceCmd)
+	scCmd.AddCommand(ccCmd)
+
+}
+
+var scCmd = &cobra.Command{
+	Use:     "sc",
+	Aliases: []string{"smartContract"},
+	Short:   "执行smartContract相关操作",
+	Long:    "执行smartContract相关操作",
+	Example: "mt client smartContract",
+	RunE: func(cmd *cobra.Command, args []string) error {
+
+		fmt.Println("nothing todo……")
+		return nil
+	},
+}
+
+var dceCmd = &cobra.Command{
+	Use:     "dce",
+	Aliases: []string{"DeployCustomERC20"},
+	Short:   "发布合约",
+	Long:    "发布合约",
+	Example: "mt client smartContract DeployCustomERC20",
+	RunE: func(cmd *cobra.Command, args []string) error {
+
+		// prv := config.AppConfig.GetString("privateKey")
+
+		// address, tx, _, err := lib.DeployCustomERC20(c, prv)
+		// if err != nil {
+		// 	return err
+		// }
+
+		// fmt.Println("CustomERC20 address: ", address)
+		// fmt.Println("CustomERC20 deploy txhash: ", tx.Hash())
+		fmt.Println("暂无法使用go来deploy contracts, 请参考readme, 执行 bash compile.sh")
+		return nil
+	},
+}
+
+var nceCmd = &cobra.Command{
+	Use:     "nce",
+	Aliases: []string{"NewCustomERC20"},
+	Short:   "链接合约",
+	Long:    "链接合约",
+	Example: "mt client smartContract NewCustomERC20",
+	RunE: func(cmd *cobra.Command, args []string) error {
+
+		CustomERC20Address := config.AppConfig.GetString("CustomERC20Address")
+		IsContract, err := lib.IsContract(c, CustomERC20Address)
+		if err != nil {
+			return err
+		}
+
+		if !IsContract {
+			return fmt.Errorf("提供的合约地址错误,合约地址: %v", CustomERC20Address)
+		}
+
+		CustomERC20, err := lib.NewCustomERC20(c, CustomERC20Address)
+		if err != nil {
+			return err
+		}
+
+		Name, err := CustomERC20.Name(nil)
+		if err != nil {
+			return err
+		}
+
+		fmt.Println("CustomERC20 的 Name: ", Name)
+		return nil
+	},
+}
+
+var ccCmd = &cobra.Command{
+	Use:     "cc",
+	Aliases: []string{"CallContract"},
+	Args:    cobra.MinimumNArgs(2),
+	Short:   "Querying a Smart Contract",
+	Long:    "Querying a Smart Contract",
+	Example: "mt client smartContract CallContract",
+	RunE: func(cmd *cobra.Command, args []string) error {
+
+		// args[0] 必须是合约
+		isContract, err := lib.IsContract(c, args[0])
+		if err != nil {
+			return err
+		}
+		if !isContract {
+			return fmt.Errorf("args[0] is not a contarct,the error address: %s", args[0])
+		}
+
+		// args[1] 必须包含()
+		if !strings.Contains(args[1], "(") || !strings.Contains(args[1], ")") {
+			return errors.New("args[1] 必须是一个function")
+		}
+		// 切割函数内容
+		// 定义正则表达式匹配 ()
+		re := regexp.MustCompile(`\((.*?)\)`)
+		// 从字符串中提取匹配的 () 内容
+		matches := re.FindStringSubmatch(args[1])
+		// 获取第一个匹配结果
+		match := matches[1]
+
+		// 使用逗号进行分割
+		parts := strings.Split(match, ",")
+
+		// 根据定义的函数数量判断入参是否足够
+		// () 是，parts[0] 为空
+		if len(parts[0]) == 0 && len(args) > 2 {
+			return fmt.Errorf("期望的入参数为: 0, 实际输入的入参数: %v", len(args)-2)
+		}
+		if len(args)-2 != len(parts) {
+			return fmt.Errorf("期望的入参数为: %v, 实际输入的入参数: %v", len(parts), len(args)-2)
+		}
+
+		// 判断输入的参数是否符合定义入参的类型要求
+
+		fmt.Println(args)
+		return nil
+	},
+}
