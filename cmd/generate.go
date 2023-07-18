@@ -1,11 +1,11 @@
 package cmd
 
 import (
+	"agnarsong/test_tools/config"
+	"agnarsong/test_tools/generate"
+	"agnarsong/test_tools/lib"
 	"errors"
 	"fmt"
-	"mantle/test/config"
-	"mantle/test/generate"
-	"mantle/test/lib"
 
 	"github.com/spf13/cobra"
 )

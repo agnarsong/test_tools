@@ -1,6 +1,6 @@
 package main
 
-import "mantle/test/cmd"
+import "agnarsong/test_tools/cmd"
 
 func main() {
 	cmd.Execute()

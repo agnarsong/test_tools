@@ -5,8 +5,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"mantle/test/config"
-	"mantle/test/lib"
+	"agnarsong/test_tools/config"
+	"agnarsong/test_tools/lib"
 )
 
 var (

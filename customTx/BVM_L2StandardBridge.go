@@ -9,8 +9,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	"mantle/test/lib"
-	"mantle/test/lib/layer2/bindings"
+	"agnarsong/test_tools/lib"
+	"agnarsong/test_tools/lib/layer2/bindings"
 )
 
 func main() {
