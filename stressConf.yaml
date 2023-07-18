@@ -33,13 +33,13 @@ bvm_l2tol1messagepasser: 0x4200000000000000000000000000000000000000
 deploybool: true
 envtype: mainnet
 l1chainid: 1
-l1erc20address: 0xE01f935bE5033DD6A82830c2Acf73Eb78F9A12EC
+l1erc20address: 0x6Be0F719aC481aDcBDde30486b1B80E1728aed1b
 l1gaslimit: 30000000
-l1url: https://rpc.ankr.com/eth
+l1url: https://eth-mainnet.g.alchemy.com/v2/C1HA_ubz9iHEBkGZi-LxwHijrRHzRhUe
 l1ws: ""
 l2bridgeaddress: 0x4200000000000000000000000000000000000010
 l2cdmaddress: 0x4200000000000000000000000000000000000007
-l2erc20address: 0xCa225884e9d294A9E90C17Dff8BC0f9d2CDA0d69
+l2erc20address: 0x822ACC53aa05fD144B69dcFad357E4487cC49987
 l2ethaddress: 0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111
 l2gaslimit: 30000000
 l2mntaddress: 0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000

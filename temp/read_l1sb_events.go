@@ -56,14 +56,15 @@ type L1cdmUnpaused struct {
 }
 
 func main() {
-	client, err := ethclient.Dial("http://127.0.0.1:9545")
+	client, err := ethclient.Dial("https://goerli.infura.io/v3/3f31ba1b9fc54dfd92e1e26a64fba7e0")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// 0x Protocol (ZRX) token address
-	contractAddress := common.HexToAddress("0xd9e2F450525079e1e29fB23Bc7Caca6F61f8fD4a")
+	contractAddress := common.HexToAddress("0x3917B2c9258F3398D69cF2C231f0F446e3ad50E2")
 	query := ethereum.FilterQuery{
+		FromBlock: big.NewInt(9332145),
 		Addresses: []common.Address{
 			contractAddress,
 		},
@@ -112,7 +113,7 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 
-	contractAbi, err := abi.JSON(strings.NewReader(string("[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"messageNonce\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasLimit\",\"type\":\"uint256\"}],\"name\":\"SentMessage\",\"type\":\"event\"}]")))
+	contractAbi, err := abi.JSON(strings.NewReader(string("[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}]")))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -122,8 +123,8 @@ func main() {
 
 	// TransactionBatchAppendedSig := []byte("TransactionBatchAppended(uint256,bytes32,uint256,uint256,bytes,bytes)")
 	// TransactionBatchAppendedSigHash := crypto.Keccak256Hash(TransactionBatchAppendedSig)
-	SentMessageSig := []byte("SentMessage(address,address,bytes,uint256,uint256)")
-	SentMessageHash := crypto.Keccak256Hash(SentMessageSig)
+	OwnershipTransferredSig := []byte("OwnershipTransferred(address)")
+	OwnershipTransferredHash := crypto.Keccak256Hash(OwnershipTransferredSig)
 
 	for _, vLog := range logs {
 		fmt.Printf("Log Block Number: %d\n", vLog.BlockNumber)
@@ -212,7 +213,7 @@ func main() {
 
 		// 	fmt.Println(common.Bytes2Hex(vLog.Data))
 
-		case SentMessageHash.Hex():
+		case OwnershipTransferredHash.Hex():
 			fmt.Printf("Log Name: SentMessage\n")
 			logdata, err := contractAbi.Unpack("SentMessage", vLog.Data)
 			if err != nil {
