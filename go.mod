@@ -1,4 +1,4 @@
-module agnarsong/test_tools
+module github.com/agnarsong/test_tools
 
 go 1.19
 

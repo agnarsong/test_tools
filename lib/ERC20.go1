@@ -1,7 +1,7 @@
 package lib
 
 import (
-	"agnarsong/test_tools/contracts/CustomERC20"
+	"github.com/agnarsong/test_tools/contracts/CustomERC20"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
