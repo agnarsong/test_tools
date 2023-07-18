@@ -7,7 +7,7 @@ import (
 	"math/big"
 	"strings"
 
-	"agnarsong/test_tools/lib/layer2/bindings"
+	"github.com/agnarsong/test_tools/lib/layer2/bindings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"

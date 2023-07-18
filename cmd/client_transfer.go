@@ -5,8 +5,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"agnarsong/test_tools/config"
-	"agnarsong/test_tools/lib"
+	"github.com/agnarsong/test_tools/config"
+	"github.com/agnarsong/test_tools/lib"
 )
 
 var (

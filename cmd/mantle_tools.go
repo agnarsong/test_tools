@@ -1,10 +1,11 @@
 package cmd
 
 import (
-	"agnarsong/test_tools/lib/layer2"
 	"context"
 	"fmt"
 	"log"
+
+	"github.com/agnarsong/test_tools/lib/layer2"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

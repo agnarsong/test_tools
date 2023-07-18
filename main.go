@@ -1,6 +1,6 @@
 package main
 
-import "agnarsong/test_tools/cmd"
+import "github.com/agnarsong/test_tools/cmd"
 
 func main() {
 	cmd.Execute()

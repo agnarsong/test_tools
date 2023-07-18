@@ -1,13 +1,14 @@
 package main
 
 import (
-	"agnarsong/test_tools/lib"
 	"context"
 	"flag"
 	"fmt"
 	"log"
 	"math/big"
 	"os"
+
+	"github.com/agnarsong/test_tools/lib"
 
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"

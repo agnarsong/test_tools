@@ -1,10 +1,11 @@
 package cmd
 
 import (
-	"agnarsong/test_tools/config"
-	"agnarsong/test_tools/lib"
 	"context"
 	"fmt"
+
+	"github.com/agnarsong/test_tools/config"
+	"github.com/agnarsong/test_tools/lib"
 
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/spf13/cobra"

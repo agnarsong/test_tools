@@ -1,11 +1,12 @@
 package cmd
 
 import (
-	"agnarsong/test_tools/config"
-	"agnarsong/test_tools/generate"
-	"agnarsong/test_tools/lib"
 	"errors"
 	"fmt"
+
+	"github.com/agnarsong/test_tools/config"
+	"github.com/agnarsong/test_tools/generate"
+	"github.com/agnarsong/test_tools/lib"
 
 	"github.com/spf13/cobra"
 )

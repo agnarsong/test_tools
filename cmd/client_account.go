@@ -8,7 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/spf13/cobra"
 
-	"agnarsong/test_tools/lib"
+	"github.com/agnarsong/test_tools/lib"
 )
 
 var (

@@ -1,8 +1,9 @@
 package cmd
 
 import (
-	"agnarsong/test_tools/config"
 	"fmt"
+
+	"github.com/agnarsong/test_tools/config"
 
 	"github.com/spf13/cobra"
 )

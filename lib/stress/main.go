@@ -8,9 +8,9 @@ import (
 	"os"
 	"time"
 
-	"agnarsong/test_tools/lib"
-	"agnarsong/test_tools/lib/layer2"
-	"agnarsong/test_tools/lib/layer2/bindings"
+	"github.com/agnarsong/test_tools/lib"
+	"github.com/agnarsong/test_tools/lib/layer2"
+	"github.com/agnarsong/test_tools/lib/layer2/bindings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"

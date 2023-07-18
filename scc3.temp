@@ -8,7 +8,7 @@ import (
 	"math/big"
 	"time"
 
-	"agnarsong/test_tools/contracts/Scc"
+	"github.com/agnarsong/test_tools/contracts/Scc"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"

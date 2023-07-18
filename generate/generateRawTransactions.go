@@ -1,13 +1,14 @@
 package generate
 
 import (
-	"agnarsong/test_tools/lib"
 	"encoding/csv"
 	"fmt"
 	"io"
 	"log"
 	"math/big"
 	"os"
+
+	"github.com/agnarsong/test_tools/lib"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"

@@ -11,7 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/spf13/cobra"
 
-	"agnarsong/test_tools/lib"
+	"github.com/agnarsong/test_tools/lib"
 )
 
 func init() {
